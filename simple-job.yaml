@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+name: demo-job
+namespace: demo
+labels:
+kueue.x-k8s.io/queue-name: demo-lq
+spec:
+template:
+spec:
+restartPolicy: Never
+containers:
+- name: worker
+image: busybox
+command: ["sh", "-c", "echo Hello Kubernetes && sleep 30"]
+resources:
+requests:
+cpu: "1"
+memory: "512Mi"
+limits:
+cpu: "1"
+memory: "512Mi"
