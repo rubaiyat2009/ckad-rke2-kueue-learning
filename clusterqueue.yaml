@@ -1,0 +1,19 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+name: demo-cq
+spec:
+resourceGroups:
+
+* coveredResources:
+
+  * cpu
+  * memory
+    flavors:
+  * name: default
+    resources:
+
+    * name: cpu
+      nominalQuota: 10
+    * name: memory
+      nominalQuota: 20Gi
